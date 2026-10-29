@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>VTC – Vilarejo Transportes Coletivos</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&display=swap">
+<style>
+:root{--bg:#04060c;--bg2:#080d19;--card:#0c1424;--b:#1c6bff;--b2:#35c4ff;--w:#fff;--m:#93a4c4;--ln:#16233f;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--bg);color:var(--w);font-family:"Sora",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.65;overflow-x:hidden}
+a{color:inherit;text-decoration:none}.wrap{max-width:1160px;margin:0 auto;padding:0 22px}
+section{padding:100px 0;position:relative}.alt{background:var(--bg2)}
+.eye{display:flex;align-items:center;gap:12px;font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--b2);font-weight:700;margin-bottom:14px}
+.eye:before{content:"";width:34px;height:2px;background:linear-gradient(90deg,var(--b),var(--b2))}
+h2{font-size:clamp(1.9rem,4vw,2.9rem);line-height:1.1;margin:0 0 14px;letter-spacing:-.03em;font-weight:800}
+h2 em{font-style:normal;background:linear-gradient(90deg,var(--b),var(--b2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--m);max-width:620px;margin:0 0 44px}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:14px 28px;border-radius:12px;font:700 .95rem "Sora",sans-serif;border:1px solid transparent;background:linear-gradient(135deg,var(--b),#0a47d6);color:#fff;cursor:pointer;box-shadow:0 8px 30px rgba(28,107,255,.35);transition:transform .25s,box-shadow .25s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(28,107,255,.55)}
+.btn.g{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.28);box-shadow:none;backdrop-filter:blur(6px)}.btn.g:hover{background:#fff;color:#000}
+.btn.s{padding:10px 18px;font-size:.84rem;border-radius:10px}
+header{position:fixed;inset:0 0 auto 0;z-index:60;padding-top:env(safe-area-inset-top,0px);transition:.3s;border-bottom:1px solid transparent}
+header.sc{background:rgba(4,6,12,.86);backdrop-filter:blur(14px);border-color:var(--ln)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:74px;gap:16px}
+.logo{display:flex;align-items:center;gap:12px;font-weight:800;line-height:1.1}.logo small{display:block;font-weight:600;font-size:.62rem;letter-spacing:.18em;color:var(--m)}
+.mark{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--b),var(--b2));display:grid;place-items:center;font-weight:800;font-size:.95rem;box-shadow:0 0 24px rgba(53,196,255,.5)}
+nav ul{display:flex;gap:2px;list-style:none;margin:0;padding:0}
+nav a{display:block;padding:9px 12px;border-radius:9px;font-size:.84rem;color:var(--m);font-weight:600;transition:.2s}nav a:hover,nav a.on{color:#fff;background:rgba(28,107,255,.18)}
+.bg{display:none;background:none;border:0;color:#fff;font-size:1.7rem;cursor:pointer}
+@media(max-width:1020px){.bg{display:block}.ncta{display:none}nav{position:fixed;top:calc(74px + env(safe-area-inset-top,0px));left:0;right:0;background:#04060cf7;max-height:0;overflow:hidden;transition:max-height .4s;border-bottom:1px solid var(--ln)}nav.open{max-height:520px}nav ul{flex-direction:column;padding:12px 22px}nav a{padding:13px}}
+.hero{min-height:100vh;padding:130px 0 120px;display:flex;align-items:center;overflow:hidden;background:radial-gradient(800px 520px at 78% 35%,rgba(28,107,255,.35),transparent 65%),radial-gradient(500px 300px at 10% 90%,rgba(53,196,255,.12),transparent 70%)}
+.hero:before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--ln) 1px,transparent 1px),linear-gradient(90deg,var(--ln) 1px,transparent 1px);background-size:56px 56px;opacity:.35;mask-image:radial-gradient(ellipse at 60% 40%,#000,transparent 75%);-webkit-mask-image:radial-gradient(ellipse at 60% 40%,#000,transparent 75%)}
+.gr{display:grid;grid-template-columns:1fr 1.1fr;gap:30px;align-items:center;position:relative}@media(max-width:900px){.gr{grid-template-columns:1fr}}
+.pill{display:inline-flex;gap:10px;align-items:center;padding:7px 16px;border:1px solid var(--ln);border-radius:99px;font-size:.78rem;color:var(--m);background:rgba(12,20,36,.7);margin-bottom:22px}
+.pill i{width:8px;height:8px;border-radius:50%;background:#2cff8a;box-shadow:0 0 10px #2cff8a;animation:pl 1.6s infinite}@keyframes pl{50%{opacity:.3}}
+.hero h1{font-size:clamp(3.4rem,9vw,6.4rem);line-height:.95;margin:0;letter-spacing:-.05em;font-weight:800}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--b),var(--b2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero h3{font-size:clamp(1rem,2.2vw,1.35rem);font-weight:600;margin:14px 0 14px;color:#dfe8ff}
+.hero p{color:var(--m);max-width:480px;margin:0 0 30px}
+.cta{display:flex;gap:14px;flex-wrap:wrap}
+.stats{display:flex;gap:34px;margin-top:44px;padding-top:26px;border-top:1px solid var(--ln);flex-wrap:wrap}
+.stats b{display:block;font-size:2rem;line-height:1.1}.stats span{font-size:.78rem;color:var(--m)}
+.fl{animation:fl 5s ease-in-out infinite}@keyframes fl{50%{transform:translateY(-12px)}}
+.city{position:absolute;left:0;right:0;bottom:46px;opacity:.5;pointer-events:none}
+.road{position:absolute;left:0;right:0;bottom:0;height:46px;background:#070b15;border-top:2px solid var(--b)}
+.road:after{content:"";position:absolute;top:21px;left:0;right:0;height:3px;background:repeating-linear-gradient(90deg,#fff 0 44px,transparent 44px 88px);opacity:.55;animation:ds 1.8s linear infinite}@keyframes ds{to{background-position:-88px 0}}
+.tick{border-block:1px solid var(--ln);background:#060a14;overflow:hidden;white-space:nowrap;padding:16px 0}
+.tick div{display:inline-block;animation:mq 30s linear infinite;color:var(--m);font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600}.tick b{color:var(--b2);margin:0 26px}@keyframes mq{to{transform:translateX(-50%)}}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+.card{background:linear-gradient(180deg,#0e1729,var(--card));border:1px solid var(--ln);border-radius:20px;padding:28px;transition:.3s;position:relative;overflow:hidden}
+.card:hover{transform:translateY(-6px);border-color:var(--b);box-shadow:0 20px 50px rgba(28,107,255,.2)}
+.card h3{margin:0 0 8px;font-size:1.15rem}.card p{color:var(--m);margin:0 0 16px;font-size:.92rem}
+.ic{width:50px;height:50px;border-radius:14px;background:rgba(28,107,255,.16);border:1px solid rgba(53,196,255,.3);display:grid;place-items:center;font-size:1.4rem;margin-bottom:18px}
+.art{margin:-10px -10px 18px;padding:18px 8px 6px;border-radius:14px;background:radial-gradient(circle at 50% 100%,rgba(28,107,255,.35),transparent 70%),#070d1b}
+.tags{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:18px}.tags span{font-size:.72rem;padding:4px 11px;border-radius:99px;background:rgba(53,196,255,.08);border:1px solid rgba(53,196,255,.25);color:var(--b2)}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.srv{margin-top:34px;border-radius:22px;padding:34px;border:1px solid var(--b);background:linear-gradient(120deg,rgba(28,107,255,.28),rgba(53,196,255,.05));display:flex;justify-content:space-between;align-items:center;gap:22px;flex-wrap:wrap}
+.srv h3{margin:0 0 6px;font-size:1.35rem}.srv p{margin:0;color:var(--m);max-width:540px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
+.chip{background:transparent;border:1px solid var(--ln);color:var(--m);padding:9px 18px;border-radius:99px;cursor:pointer;font:600 .82rem "Sora",sans-serif;transition:.2s}.chip:hover{border-color:var(--b);color:#fff}.chip.on{background:var(--b);border-color:var(--b);color:#fff}
+.rt{display:grid;grid-template-columns:340px 1fr;gap:22px}@media(max-width:900px){.rt{grid-template-columns:1fr}}
+.li{display:flex;gap:14px;align-items:center;padding:16px;border-radius:14px;border:1px solid var(--ln);background:var(--card);cursor:pointer;margin-bottom:10px;transition:.25s;width:100%;text-align:left;color:#fff;font-family:inherit}
+.li:hover,.li.on{border-color:var(--b);background:#0f1b33}
+.n{min-width:56px;text-align:center;padding:9px 0;border-radius:10px;font-weight:800;background:linear-gradient(135deg,var(--b),#0a47d6)}
+.li small{color:var(--m);display:block;font-size:.76rem}
+.mapc{padding:26px;overflow-x:auto}.stops{display:flex;position:relative;min-width:520px;margin:60px 0 20px}
+.stops:before{content:"";position:absolute;left:0;right:0;top:11px;height:6px;border-radius:4px;background:linear-gradient(90deg,var(--b),var(--b2))}
+.st{flex:1;position:relative;text-align:center}.st:first-child{text-align:left}.st:last-child{text-align:right;flex:0}
+.st i{display:block;width:28px;height:28px;border-radius:50%;background:#04060c;border:5px solid var(--b2);position:relative;z-index:1;box-shadow:0 0 16px rgba(53,196,255,.6)}.st:last-child i{margin-left:auto}.st:not(:first-child):not(:last-child) i{margin:0 auto}
+.st span{display:block;margin-top:12px;font-size:.82rem;color:#dfe8ff;white-space:nowrap}
+.org{display:flex;flex-direction:column;align-items:center;gap:26px}.lv{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;width:100%}
+.mem{width:250px;text-align:center}.av{width:64px;height:64px;border-radius:50%;margin:0 auto 14px;display:grid;place-items:center;font-weight:800;font-size:1.3rem;background:linear-gradient(135deg,var(--b),var(--b2));box-shadow:0 0 26px rgba(53,196,255,.35)}
+.lab{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--b2);font-weight:700}
+.nw{display:grid;grid-template-columns:1.3fr 1fr;gap:22px}@media(max-width:860px){.nw{grid-template-columns:1fr}}
+.feat{min-height:340px;display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(180deg,rgba(4,6,12,.1),rgba(4,6,12,.92)),radial-gradient(circle at 70% 25%,rgba(28,107,255,.7),#0a1226 70%)}
+.feat h3{font-size:1.6rem}
+.dt{font-size:.74rem;color:var(--m)}
+.stp{display:grid;gap:12px;margin:0 0 30px;padding:0;list-style:none;counter-reset:s}
+.stp li{counter-increment:s;display:flex;gap:16px;align-items:center;background:var(--card);border:1px solid var(--ln);border-radius:14px;padding:16px 20px}
+.stp li:before{content:counter(s);flex:none;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-weight:800;background:linear-gradient(135deg,var(--b),var(--b2))}
+.inp{background:#060b16;border:1px solid var(--ln);color:#fff;border-radius:12px;padding:14px 16px;font:inherit;width:100%}.inp:focus{outline:2px solid var(--b);border-color:transparent}
+footer{background:#02030a;border-top:1px solid var(--ln);padding:60px 0 28px;color:var(--m);font-size:.88rem}
+.fg{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:30px;margin-bottom:34px}@media(max-width:760px){.fg{grid-template-columns:1fr}}
+footer h4{color:#fff;margin:0 0 14px;font-size:.9rem}footer a{display:block;padding:4px 0}footer a:hover{color:var(--b2)}
+.cp{border-top:1px solid var(--ln);padding-top:22px;font-size:.78rem}
+.rv{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s}.rv.in{opacity:1;transform:none}
+.toast{position:fixed;left:50%;bottom:calc(26px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--b);padding:13px 24px;border-radius:12px;font-weight:600;z-index:99;box-shadow:0 12px 34px #000b}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/tsx" id="app-src">
+const { useState, useEffect, useRef } = React;
+
+// ===== LINKS — edite aqui =====
+const LINKS = {
+  form: "https://forms.gle/sFHzNPpJfWWwDaef8",
+  discord: "https://discord.gg/mp3y3Y2ED",
+  downloads: "https://discord.gg/mp3y3Y2ED", // troque pelo link da pasta de modelos e skins
+  server: "https://discord.gg/mp3y3Y2ED",    // troque pelo link/IP do servidor de jogatina
+};
+const SECTIONS: { id: string; label: string }[] = [
+  { id: "inicio", label: "Início" }, { id: "sobre", label: "Sobre nós" }, { id: "frota", label: "Nossa frota" },
+  { id: "linhas", label: "Linhas" }, { id: "equipe", label: "Equipe" }, { id: "noticias", label: "Notícias" },
+  { id: "recrutamento", label: "Recrutamento" }, { id: "contato", label: "Contato" },
+];
+const Ext = ({ href, children, cls = "btn" }: { href: string; children: any; cls?: string }) =>
+  <a className={cls} href={href} target="_blank" rel="noopener noreferrer">{children}</a>;
+
+function Bus({ art = false, c1 = "#1c6bff", c2 = "#0a3fc0", sign = "101 CENTRO" }: { art?: boolean; c1?: string; c2?: string; sign?: string }) {
+  const id = "g" + c1.slice(1) + (art ? "a" : "c");
+  const W = art ? [26, 70, 114, 158, 232, 276, 320, 364] : [26, 72, 118, 164, 210, 256, 302, 348];
+  return (
+    <svg viewBox="0 0 520 190" width="100%" role="img" aria-label="Ônibus urbano ilustrativo">
+      <defs>
+        <linearGradient id={id} x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor={c1} /><stop offset="1" stopColor={c2} /></linearGradient>
+        <linearGradient id={id + "w"} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#7fb6ff" /><stop offset=".5" stopColor="#10224a" /><stop offset="1" stopColor="#060d20" /></linearGradient>
+        <radialGradient id={id + "h"}><stop offset="0" stopColor="#fff" stopOpacity=".9" /><stop offset="1" stopColor="#35c4ff" stopOpacity="0" /></radialGradient>
+      </defs>
+      <ellipse cx="260" cy="170" rx="240" ry="9" fill="#000" opacity=".5" />
+      <rect x="12" y="34" width="476" height="116" rx="18" fill={`url(#${id})`} />
+      <rect x="12" y="104" width="476" height="14" fill="#fff" opacity=".95" />
+      <rect x="12" y="120" width="476" height="4" fill="#35c4ff" opacity=".8" />
+      {W.map((x) => <rect key={x} x={x} y="48" width="38" height="42" rx="6" fill={`url(#${id}w)`} />)}
+      <rect x="418" y="46" width="62" height="86" rx="10" fill={`url(#${id}w)`} />
+      <rect x="406" y="48" width="2" height="82" fill="#fff" opacity=".4" />
+      {art && <g><rect x="204" y="34" width="22" height="116" fill="#05070d" /><path d="M204 34l5-10h12l5 10M204 150l5 8h12l5-8" fill="#05070d" /></g>}
+      <rect x="436" y="36" width="50" height="10" rx="3" fill="#05070d" /><text x="461" y="44" fontSize="7" textAnchor="middle" fill="#ffb020" fontWeight="700">{sign}</text>
+      <text x="44" y="141" fontSize="13" fontWeight="800" fill="#fff" opacity=".95" letterSpacing="3">VTC</text>
+      <circle cx="486" cy="140" r="26" fill={`url(#${id}h)`} />
+      <rect x="480" y="134" width="8" height="12" rx="3" fill="#fff" />
+      {[84, art ? 296 : 340, 430].map((x) => <g key={x}><circle cx={x} cy="150" r="21" fill="#05070d" /><circle cx={x} cy="150" r="11" fill="#cdd9f5" /><circle cx={x} cy="150" r="4" fill="#4a5a80" /></g>)}
+    </svg>
+  );
+}
+const City = () => (
+  <svg className="city" viewBox="0 0 1200 120" preserveAspectRatio="none" height="110" width="100%">
+    <path fill="#0a1226" d="M0 120V70h60V40h50v30h40V20h60v50h50V50h70v70zM380 120V60h50V30h60v40h40V10h70v60h50V45h60v75zM800 120V65h60V35h50v30h50V15h70v55h60V50h60v70zM1120 120V75h80v45z" />
+    <g fill="#35c4ff" opacity=".5">{[80,200,420,540,700,860,980,1140].map((x, i) => <rect key={x} x={x} y={30 + (i % 3) * 18} width="6" height="6" />)}</g>
+  </svg>
+);
+
+function useReveal() {
+  useEffect(() => {
+    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: 0.1 });
+    document.querySelectorAll(".rv:not(.in)").forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  });
+}
+function Count({ to, suffix = "" }: { to: number; suffix?: string }) {
+  const [v, setV] = useState(0);
+  useEffect(() => { let n = 0; const t = setInterval(() => { n += Math.max(1, Math.ceil(to / 30)); if (n >= to) { n = to; clearInterval(t); } setV(n); }, 40); return () => clearInterval(t); }, [to]);
+  return <b>{v}{suffix}</b>;
+}
+function Head({ eye, children, sub }: { eye: string; children: any; sub?: string }) {
+  return <div className="rv"><div className="eye">{eye}</div><h2>{children}</h2>{sub && <p className="sub">{sub}</p>}</div>;
+}
+
+function Header({ active }: { active: string }) {
+  const [open, setOpen] = useState(false); const [sc, setSc] = useState(false);
+  useEffect(() => { const f = () => setSc(window.scrollY > 30); f(); window.addEventListener("scroll", f); return () => window.removeEventListener("scroll", f); }, []);
+  return (
+    <header className={sc ? "sc" : ""}><div className="wrap nav">
+      <a href="#inicio" className="logo"><span className="mark">VTC</span><span>Vilarejo<small>TRANSPORTES COLETIVOS</small></span></a>
+      <nav className={open ? "open" : ""}><ul>{SECTIONS.map((s) => <li key={s.id}><a href={"#" + s.id} className={active === s.id ? "on" : ""} onClick={() => setOpen(false)}>{s.label}</a></li>)}</ul></nav>
+      <Ext href={LINKS.discord} cls="btn s ncta">Discord</Ext>
+      <button className="bg" aria-label="Menu" aria-expanded={open} onClick={() => setOpen(!open)}>{open ? "✕" : "☰"}</button>
+    </div></header>
+  );
+}
+
+function Hero() {
+  return (
+    <section id="inicio" className="hero"><City /><div className="wrap gr">
+      <div>
+        <div className="pill"><i /> Empresa virtual · OMSI 2 &amp; Open OMSI 2</div>
+        <h1><em>VTC</em></h1>
+        <h3>Vilarejo Transportes Coletivos</h3>
+        <p>Conectando motoristas, linhas e destinos. Opere o mapa Vilarejo 5.5 com uma equipe organizada, frota padronizada e comboios em comunidade.</p>
+        <div className="cta"><a className="btn" href="#frota">Conheça a frota →</a><a className="btn g" href="#recrutamento">Entre na equipe</a></div>
+        <div className="stats"><div><Count to={3} /><span>modelos na frota</span></div><div><b>5.5</b><span>mapa Vilarejo</span></div><div><Count to={8} suffix="+" /><span>linhas demonstrativas</span></div></div>
+      </div>
+      <div className="fl"><Bus /></div>
+    </div><div className="road" /></section>
+  );
+}
+const Ticker = () => { const t = ["Open OMSI 2 Community", "Mapa Vilarejo 5.5", "Comboios", "Recrutamento aberto", "Caio Apache VIP IV", "Caio Millennium", "Marcopolo Torino S"];
+  const row = [...t, ...t].map((x, i) => <span key={i}>{x}<b>◆</b></span>);
+  return <div className="tick"><div>{row}{row}</div></div>; };
+
+function About() {
+  const it = [["🎯", "Missão", "Proporcionar uma experiência realista e organizada de transporte coletivo, reunindo motoristas apaixonados por simulação."],
+    ["🚌", "Nossa história", "A VTC nasceu na comunidade Open OMSI 2 Community como empresa virtual, com identidade, frota e operação próprias no mapa Vilarejo."],
+    ["🏁", "Objetivos", "Crescer a equipe, padronizar a frota, organizar comboios e eventos e manter um ambiente respeitoso e divertido."]];
+  return <section id="sobre" className="alt"><div className="wrap">
+    <Head eye="01 · Sobre nós" sub="A VTC é uma empresa virtual de simulação, sem vínculo com empresas reais de transporte. Os textos são demonstrativos.">Mais que um jogo, uma <em>operação de verdade</em></Head>
+    <div className="cards">{it.map((x) => <div className="card rv" key={x[1]}><div className="ic">{x[0]}</div><h3>{x[1]}</h3><p>{x[2]}</p></div>)}</div>
+  </div></section>;
+}
+
+function Fleet() {
+  const f = [{ n: "Caio Apache VIP IV", k: "Convencional", b: <Bus />, d: "Clássico urbano brasileiro para linhas de bairro e alimentadoras.", t: ["Urbano", "Linhas locais", "Ativo"] },
+    { n: "Caio Millennium articulado", k: "Articulado", b: <Bus art c1="#0f55e0" c2="#06298a" sign="201 CIRCULAR" />, d: "Alta capacidade para corredores e linhas troncais movimentadas.", t: ["Articulado", "Troncal", "Ativo"] },
+    { n: "Marcopolo Torino S", k: "Convencional", b: <Bus c1="#35c4ff" c2="#0a6bd0" sign="301 EXPRESSO" />, d: "Visual moderno e versátil para operações urbanas variadas.", t: ["Urbano", "Versátil", "Ativo"] }];
+  return <section id="frota"><div className="wrap">
+    <Head eye="02 · Nossa frota" sub="Baixe os modelos e as skins da frota para rodar com a gente.">Ônibus que <em>movem a VTC</em></Head>
+    <div className="cards">{f.map((x) => <div className="card rv" key={x.n}><div className="art">{x.b}</div><div className="lab">{x.k}</div><h3>{x.n}</h3><p>{x.d}</p>
+      <div className="tags">{x.t.map((s) => <span key={s}>{s}</span>)}</div>
+      <div className="row"><Ext href={LINKS.downloads} cls="btn s">⬇ Modelo</Ext><Ext href={LINKS.downloads} cls="btn s g">🎨 Skin</Ext></div></div>)}</div>
+    <div className="srv rv"><div><h3>🎮 Servidor de jogatina da VTC</h3><p>Espaço do nosso servidor da empresa virtual: entre, opere em grupo e participe dos comboios.</p></div><Ext href={LINKS.server}>Acessar servidor</Ext></div>
+  </div></section>;
+}
+
+function Routes() {
+  const R = [{ n: "101", t: "Troncal", name: "Centro ↔ Terminal", s: ["Centro", "Praça", "Hospital", "Terminal"] },
+    { n: "102", t: "Alimentadora", name: "Terminal ↔ Bairro Alto", s: ["Terminal", "Escola", "Mercado", "Bairro Alto"] },
+    { n: "201", t: "Circular", name: "Circular Vilarejo", s: ["Centro", "Estação", "Parque", "Centro"] },
+    { n: "301", t: "Expresso", name: "Centro ↔ Rodoviária", s: ["Centro", "Av. Principal", "Rodoviária"] }];
+  const [f, setF] = useState("Todas"); const [sel, setSel] = useState("101");
+  const cur = R.find((r) => r.n === sel) || R[0];
+  return <section id="linhas" className="alt"><div className="wrap">
+    <Head eye="03 · Linhas" sub="Itinerários demonstrativos para o mapa Vilarejo 5.5. Trajetos oficiais serão divulgados pela VTC.">Operação no <em>Vilarejo 5.5</em></Head>
+    <div className="chips">{["Todas", "Troncal", "Alimentadora", "Circular", "Expresso"].map((c) => <button key={c} className={"chip" + (f === c ? " on" : "")} onClick={() => setF(c)}>{c}</button>)}</div>
+    <div className="rt"><div>{R.filter((r) => f === "Todas" || r.t === f).map((r) => <button key={r.n} className={"li" + (sel === r.n ? " on" : "")} onClick={() => setSel(r.n)}><span className="n">{r.n}</span><span><b>{r.name}</b><small>{r.t}</small></span></button>)}</div>
+      <div className="card mapc"><div className="lab">Linha {cur.n} · {cur.t}</div><h3 style={{ margin: "6px 0 0" }}>{cur.name}</h3>
+        <div className="stops">{cur.s.map((s, i) => <div className="st" key={s + i}><i /><span>{s}</span></div>)}</div>
+        <p style={{ marginBottom: 0 }}>Esquema ilustrativo da operação. Horários e frota por linha: consulte a coordenação no Discord.</p></div></div>
+  </div></section>;
+}
+
+function Team() {
+  const L: { l: string; m: { r: string; d: string }[] }[] = [
+    { l: "Administração", m: [{ r: "Diretor(a) Geral", d: "Gestão e decisões da empresa" }, { r: "Vice-diretor(a)", d: "Apoio à direção e processos" }] },
+    { l: "Coordenação", m: [{ r: "Operações", d: "Linhas, escalas e comboios" }, { r: "Frota", d: "Modelos, skins e downloads" }, { r: "Eventos", d: "Encontros e divulgação" }] },
+    { l: "Motoristas", m: [{ r: "Motorista Sênior", d: "Referência operacional" }, { r: "Motorista", d: "Operação das linhas" }, { r: "Trainee", d: "Em treinamento" }] }];
+  return <section id="equipe"><div className="wrap">
+    <Head eye="04 · Equipe" sub="Estrutura demonstrativa. Nomes reais podem ser incluídos pela diretoria.">Organização <em>operacional</em></Head>
+    <div className="org">{L.map((g) => <div key={g.l} style={{ width: "100%" }}><div className="lab" style={{ textAlign: "center", marginBottom: 14 }}>{g.l}</div>
+      <div className="lv">{g.m.map((m) => <div className="card mem rv" key={m.r}><div className="av">{m.r[0]}</div><h3>{m.r}</h3><p style={{ margin: 0 }}>{m.d}</p></div>)}</div></div>)}</div>
+  </div></section>;
+}
+
+function News() {
+  const N = [{ c: "Eventos", t: "Encontro de motoristas VTC", p: "Integração da equipe com bate-papo, apresentação de novidades e sorteios." },
+    { c: "Comboios", t: "Comboio Linha 101", p: "Toda a frota pela linha troncal do Vilarejo 5.5." },
+    { c: "Novidades", t: "Novas skins da frota", p: "Atualização visual dos modelos disponíveis em downloads." }];
+  const [f, setF] = useState("Todas");
+  const L = N.filter((n) => f === "Todas" || n.c === f);
+  return <section id="noticias" className="alt"><div className="wrap">
+    <Head eye="05 · Notícias" sub="Conteúdo demonstrativo; datas e detalhes serão atualizados pela equipe.">Fique por <em>dentro</em></Head>
+    <div className="chips">{["Todas", "Novidades", "Eventos", "Comboios"].map((c) => <button key={c} className={"chip" + (f === c ? " on" : "")} onClick={() => setF(c)}>{c}</button>)}</div>
+    <div className="nw">{L[0] ? <article className="card feat"><div className="lab">{L[0].c} · destaque</div><h3>{L[0].t}</h3><p>{L[0].p}</p><span className="dt">Em breve</span></article> : null}
+      <div style={{ display: "grid", gap: 16 }}>{L.slice(1).map((n) => <article className="card" key={n.t}><div className="lab">{n.c}</div><h3>{n.t}</h3><p>{n.p}</p><span className="dt">Em breve</span></article>)}</div></div>
+  </div></section>;
+}
+
+function Recruit() {
+  return <section id="recrutamento"><div className="wrap gr">
+    <div className="rv"><div className="eye">06 · Recrutamento</div><h2>Seja motorista <em>da VTC</em></h2><p className="sub" style={{ marginBottom: 26 }}>Venha fazer parte da equipe. É simples:</p>
+      <ol className="stp"><li>Tenha o OMSI 2 ou Open OMSI 2 instalado</li><li>Preencha o formulário de recrutamento</li><li>Aguarde o contato da equipe no Discord</li><li>Baixe a frota e comece a operar</li></ol>
+      <div className="row"><Ext href={LINKS.form}>Acessar formulário →</Ext><Ext href={LINKS.discord} cls="btn g">Falar no Discord</Ext></div></div>
+    <div className="fl"><Bus c1="#35c4ff" c2="#0a6bd0" sign="RECRUTA" /></div>
+  </div></section>;
+}
+
+function Contact() {
+  const [nm, setNm] = useState(""); const [ms, setMs] = useState(""); const [t, setT] = useState(false);
+  const send = () => { const txt = `Olá, VTC! Sou ${nm || "(nome)"}. ${ms}`; if (navigator.clipboard) navigator.clipboard.writeText(txt).catch(() => {}); setT(true); setTimeout(() => setT(false), 3000); window.open(LINKS.discord, "_blank", "noopener"); };
+  return <section id="contato" className="alt"><div className="wrap">
+    <Head eye="07 · Contato" sub="Entre no Discord ou envie sua inscrição pelo formulário oficial.">Fale com a <em>VTC</em></Head>
+    <div className="cards">
+      <div className="card rv"><div className="ic">💬</div><h3>Discord</h3><p>Converse com a equipe e acompanhe comboios.</p><Ext href={LINKS.discord} cls="btn s">Entrar no Discord</Ext></div>
+      <div className="card rv"><div className="ic">📝</div><h3>Formulário de recrutamento</h3><p>Inscreva-se para ser motorista.</p><Ext href={LINKS.form} cls="btn s">Abrir formulário</Ext></div>
+      <div className="card rv"><div className="ic">✉️</div><h3>Mensagem rápida</h3><p>Escreva abaixo: copiamos o texto e abrimos o Discord.</p>
+        <div style={{ display: "grid", gap: 10 }}><input className="inp" aria-label="Nome" placeholder="Seu nome" value={nm} onChange={(e: any) => setNm(e.target.value)} />
+          <textarea className="inp" aria-label="Mensagem" rows={3} placeholder="Sua mensagem" value={ms} onChange={(e: any) => setMs(e.target.value)} />
+          <button className="btn s" onClick={send}>Copiar e abrir Discord</button></div></div>
+    </div>{t && <div className="toast" role="status">Mensagem copiada! Cole no Discord.</div>}
+  </div></section>;
+}
+
+function Footer() {
+  return <footer><div className="wrap"><div className="fg">
+    <div><div className="logo" style={{ color: "#fff", marginBottom: 14 }}><span className="mark">VTC</span><span>Vilarejo Transportes Coletivos</span></div>
+      <p style={{ margin: 0, maxWidth: 380 }}>Empresa virtual de simulação da comunidade Open OMSI 2 Community, dedicada ao transporte público no OMSI 2 e Open OMSI 2.</p></div>
+    <div><h4>Navegação</h4>{SECTIONS.slice(0, 4).map((s) => <a key={s.id} href={"#" + s.id}>{s.label}</a>)}</div>
+    <div><h4>Mais</h4>{SECTIONS.slice(4).map((s) => <a key={s.id} href={"#" + s.id}>{s.label}</a>)}<Ext href={LINKS.form} cls="">Formulário</Ext></div>
+  </div><div className="cp">© 2026 VTC – Vilarejo Transportes Coletivos. A VTC é uma empresa virtual de simulação, sem vínculo com empresas reais de transporte.</div></div></footer>;
+}
+
+function App() {
+  const [a, setA] = useState("inicio"); useReveal();
+  useEffect(() => { const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) setA(e.target.id); }), { rootMargin: "-40% 0px -55% 0px" });
+    SECTIONS.forEach((s) => { const el = document.getElementById(s.id); if (el) io.observe(el); }); return () => io.disconnect(); }, []);
+  return <><Header active={a} /><main><Hero /><Ticker /><About /><Fleet /><Routes /><Team /><News /><Recruit /><Contact /></main><Footer /></>;
+}
+ReactDOM.createRoot(document.getElementById("root")!).render(<App />);
+</script>
+<script>
+try {
+  var src = document.getElementById('app-src').textContent;
+  var out = Babel.transform(src, { filename: 'app.tsx', presets: [['typescript', { allExtensions: true, isTSX: true }], 'react'] }).code;
+  var s = document.createElement('script'); s.text = out; document.body.appendChild(s);
+} catch (e) {
+  document.getElementById('root').innerHTML = '<pre style="color:#fff;padding:90px 20px;white-space:pre-wrap">Erro ao carregar o site: ' + e.message + '</pre>';
+}
+</script>
+</body>
+</html>
